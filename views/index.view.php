@@ -7,8 +7,8 @@
     <?php endforeach ?>
 </ul>
 <br>
-<form action="/user/add" method="POST">
+<!-- <form action="/user/add" method="POST">
     <input type="text" name="name">
     <button type="submit">add user</button>
-</form>
+</form> -->
 <?php require 'views/partials/footer.php' ?>
