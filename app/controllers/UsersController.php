@@ -13,8 +13,12 @@ class UsersController
 
     public function store()
     {
+        $name = htmlspecialchars($_POST['name']);
+        if ($name == null) {
+            redirect('/');
+        }
         App::get('database')->insert('users', [
-            'name' => $_POST['name']
+            'name' => $name
         ]);
 
         redirect('/users/all');
