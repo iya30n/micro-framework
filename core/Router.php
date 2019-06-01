@@ -32,7 +32,7 @@ class Router
                 ...explode('@', $this->routes[$requestMethod][$uri])
             );
         }
-        throw new \Error('route dies not exists');
+        throw new \Error('route does not exists');
     }
 
     public function callAction($controller, $method)

@@ -3,7 +3,10 @@
 <h2>all users</h2>
 <ul>
     <?php foreach($users as $user): ?>
-    <li><?= $user->name ?></li>
+    <li><?= $user->name ?>
+        <a href="/user/edit?id=<?=$user->id?>">edit</a>
+        <a href="/user/delete?id=<?=$user->id?>">X</a>
+    </li>
     <?php endforeach ?>
 </ul>
 <br>
