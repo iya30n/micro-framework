@@ -15,6 +15,13 @@ class QueryBuilder
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function find($table, $id)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM {$table} WHERE id={$id}");
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
     public function insert($table, $params)
     {
         $sql = sprintf(
@@ -25,5 +32,25 @@ class QueryBuilder
         );
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
+    }
+
+    public function update($table, $id, $params)
+    {
+        $maked = [];
+        foreach ($params as $key => $value) {
+            $maked[] = "$key=:$key";
+        }
+        $sql = sprintf(
+            "update %s set %s where id=$id",
+            $table,
+            implode(', ', $maked)
+        );
+        $this->pdo->prepare($sql)->execute($params);
+    }
+
+    public function delete($table, $id)
+    {
+        $stmt = $this->pdo->prepare("delete from {$table} where id={$id}");
+        $stmt->execute();
     }
 }
