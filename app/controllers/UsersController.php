@@ -13,7 +13,7 @@ class UsersController
 
     public function store()
     {
-        $name = htmlspecialchars($_POST['name']);
+        $name = htmlspecialchars(trim($_POST['name']));
         if ($name == null) {
             redirect('/');
         }
