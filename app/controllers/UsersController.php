@@ -13,10 +13,7 @@ class UsersController
 
     public function store()
     {
-        $name = htmlspecialchars(trim($_POST['name']));
-        if ($name == null) {
-            redirect('/');
-        }
+        $name = validateData($_POST['name']);
         App::get('database')->insert('users', [
             'name' => $name
         ]);
@@ -26,31 +23,22 @@ class UsersController
 
     public function edit()
     {
-        $id = htmlspecialchars(trim($_GET['id']));
-        if ($id == null) {
-            dd('id can not be null');
-        }
+        $id = validateData($_GET['id']);
         $user = App::get('database')->find('users', $id);
         return view('users/edit', ['user' => $user]);
     }
 
     public function update()
     {
-        $name = htmlspecialchars(trim($_POST['name']));
-        $id = htmlspecialchars(trim($_POST['id']));
-        if ($name == null || $id == null) {
-            redirect('/');
-        }
+        $name = validateData($_POST['name']);
+        $id = validateData($_POST['id']);
         App::get('database')->update('users', $id, ['name' => $name]);
         redirect('/users/all');
     }
 
     public function delete()
     {
-        $id = htmlspecialchars(trim($_GET['id']));
-        if ($id == null) {
-            dd('id can not be null');
-        }
+        $id = validateData($_GET['id']);
         App::get('database')->delete('users', $id);
         redirect('/users/all');
     }
