@@ -18,3 +18,11 @@ function redirect($path)
 {
     header("location: {$path}");
 }
+
+function validateData($data){
+    $data = htmlspecialchars(trim($data));
+    if($data == null){
+        redirect('/');
+    }
+    return $data;    
+}
