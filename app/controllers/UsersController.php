@@ -1,20 +1,20 @@
 <?php
 namespace App\Controllers;
 
-use App\Core\App;
+use App\Model\User;
 
 class UsersController
 {
     public function all()
     {
-        $users = App::get('database')->selectAll('users');
+        $users = User::all('users');
         return view('users/index', ['users' => $users]);
     }
 
     public function store()
     {
         $name = validateData($_POST['name']);
-        App::get('database')->insert('users', [
+        User::create([
             'name' => $name
         ]);
 
@@ -24,7 +24,7 @@ class UsersController
     public function edit()
     {
         $id = validateData($_GET['id']);
-        $user = App::get('database')->find('users', $id);
+        $user = User::find($id);
         return view('users/edit', ['user' => $user]);
     }
 
@@ -32,14 +32,14 @@ class UsersController
     {
         $name = validateData($_POST['name']);
         $id = validateData($_POST['id']);
-        App::get('database')->update('users', $id, ['name' => $name]);
+        User::update($id, ['name' => $name]);
         redirect('/users/all');
     }
 
     public function delete()
     {
         $id = validateData($_GET['id']);
-        App::get('database')->delete('users', $id);
+        User::delete($id);
         redirect('/users/all');
     }
 }

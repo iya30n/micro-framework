@@ -37,6 +37,7 @@ class Router
 
     public function callAction($controller, $method)
     {
+
         $controller = "App\\Controllers\\{$controller}";
         $controller = new $controller;
         if (method_exists($controller, $method)) {
