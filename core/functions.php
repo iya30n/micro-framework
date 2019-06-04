@@ -1,4 +1,6 @@
 <?php
+use App\Core\Request;
+
 function dd(...$somthing)
 {
     echo '<pre>';
@@ -25,4 +27,9 @@ function validateData($data)
         redirect('/');
     }
     return $data;
+}
+
+function request($key)
+{
+    return Request::get($key);
 }

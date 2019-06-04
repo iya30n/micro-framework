@@ -13,9 +13,8 @@ class UsersController
 
     public function store()
     {
-        $name = validateData($_POST['name']);
         User::create([
-            'name' => $name
+            'name' => request('name')
         ]);
 
         redirect('/users/all');
@@ -23,23 +22,19 @@ class UsersController
 
     public function edit()
     {
-        $id = validateData($_GET['id']);
-        $user = User::find($id);
+        $user = User::find(request('id'));
         return view('users/edit', ['user' => $user]);
     }
 
     public function update()
     {
-        $name = validateData($_POST['name']);
-        $id = validateData($_POST['id']);
-        User::update($id, ['name' => $name]);
+        User::update(request('id'), ['name' => request('name')]);
         redirect('/users/all');
     }
 
     public function delete()
     {
-        $id = validateData($_GET['id']);
-        User::delete($id);
+        User::delete(request('id'));
         redirect('/users/all');
     }
 }
