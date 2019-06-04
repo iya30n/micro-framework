@@ -15,4 +15,12 @@ class Request
     {
         return $_SERVER['REQUEST_METHOD'];
     }
+
+    public static function get($key)
+    {
+        if ($key == 'all') {
+            return array_map('validateData', $_REQUEST);
+        }
+        return validateData($_REQUEST[$key]);
+    }
 }
