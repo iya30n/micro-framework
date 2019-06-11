@@ -22,6 +22,11 @@ class Model
         return App::get('database')->find(static::$table, $id);
     }
 
+    public static function where($key, $value)
+    {
+        return App::get('database')->where(static::$table, $key, $value);
+    }
+
     public static function update($id, $values)
     {
         App::get('database')->update(static::$table, $id, $values);
@@ -32,4 +37,3 @@ class Model
         App::get('database')->delete(static::$table, $id);
     }
 }
-
