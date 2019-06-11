@@ -22,6 +22,13 @@ class QueryBuilder
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    public function where($table, $key, $value)
+    {
+        $stmt = $this->pdo->prepare("select * from $table where $key= '$value'");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function insert($table, $params)
     {
         $sql = sprintf(
