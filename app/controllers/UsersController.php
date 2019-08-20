@@ -7,7 +7,7 @@ class UsersController
 {
     public function all()
     {
-        $users = User::all('users');
+        $users = User::all();
         return view('users/index', ['users' => $users]);
     }
 
