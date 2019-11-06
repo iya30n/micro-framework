@@ -8,4 +8,4 @@ use App\Core \ {
 Request, Router
 };
 
-require Router::load('app/routes.php')->direct(Request::uri(), Request::method());
+Router::load('app/routes.php')->direct(Request::uri(), Request::method());
