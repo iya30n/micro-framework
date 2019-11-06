@@ -9,6 +9,7 @@ class ComposerStaticInit604276bb9c3640243a5d4e0f842b2266
     public static $classMap = array (
         'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/controllers/HomeController.php',
         'App\\Core\\App' => __DIR__ . '/../..' . '/core/App.php',
+        'App\\Core\\Model' => __DIR__ . '/../..' . '/core/Model.php',
         'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
         'ComposerAutoloaderInit604276bb9c3640243a5d4e0f842b2266' => __DIR__ . '/..' . '/composer/autoload_real.php',
